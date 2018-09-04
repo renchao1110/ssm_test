@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hl95.demo.dao.ReportMapper">
+  <resultMap id="BaseResultMap" type="com.hl95.demo.entity.Report">
+  	<id column="id" jdbcType="INTEGER" property="id" />
+    <result column="PlatForm" jdbcType="VARCHAR" property="platform" />
+    <result column="FUnikey" jdbcType="VARCHAR" property="funikey" />
+    <result column="FOrgAddr" jdbcType="VARCHAR" property="forgaddr" />
+    <result column="FDestAddr" jdbcType="VARCHAR" property="fdestaddr" />
+    <result column="FSubmitTime" jdbcType="TIMESTAMP" property="fsubmittime" />
+    <result column="FFeeTerminal" jdbcType="VARCHAR" property="ffeeterminal" />
+    <result column="FServiceUPID" jdbcType="INTEGER" property="fserviceupid" />
+    <result column="FReportCode" jdbcType="VARCHAR" property="freportcode" />
+    <result column="FLinkID" jdbcType="INTEGER" property="flinkid" />
+    <result column="FAckStatus" jdbcType="VARCHAR" property="fackstatus" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PlatForm, FUnikey, FOrgAddr, FDestAddr, FSubmitTime, FFeeTerminal, FServiceUPID, 
+    FReportCode, FLinkID, FAckStatus
+  </sql>
+  <select id="selectByExample" parameterType="com.hl95.demo.entity.ReportExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from report
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.hl95.demo.entity.ReportExample">
+    delete from report
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hl95.demo.entity.Report">
+    insert into report (PlatForm, FUnikey, FOrgAddr, 
+      FDestAddr, FSubmitTime, FFeeTerminal, 
+      FServiceUPID, FReportCode, FLinkID, 
+      FAckStatus)
+    values (#{platform,jdbcType=VARCHAR}, #{funikey,jdbcType=VARCHAR}, #{forgaddr,jdbcType=VARCHAR}, 
+      #{fdestaddr,jdbcType=VARCHAR}, #{fsubmittime,jdbcType=TIMESTAMP}, #{ffeeterminal,jdbcType=VARCHAR}, 
+      #{fserviceupid,jdbcType=INTEGER}, #{freportcode,jdbcType=VARCHAR}, #{flinkid,jdbcType=INTEGER}, 
+      #{fackstatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hl95.demo.entity.Report">
+    insert into report
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="platform != null">
+        PlatForm,
+      </if>
+      <if test="funikey != null">
+        FUnikey,
+      </if>
+      <if test="forgaddr != null">
+        FOrgAddr,
+      </if>
+      <if test="fdestaddr != null">
+        FDestAddr,
+      </if>
+      <if test="fsubmittime != null">
+        FSubmitTime,
+      </if>
+      <if test="ffeeterminal != null">
+        FFeeTerminal,
+      </if>
+      <if test="fserviceupid != null">
+        FServiceUPID,
+      </if>
+      <if test="freportcode != null">
+        FReportCode,
+      </if>
+      <if test="flinkid != null">
+        FLinkID,
+      </if>
+      <if test="fackstatus != null">
+        FAckStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="platform != null">
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="funikey != null">
+        #{funikey,jdbcType=VARCHAR},
+      </if>
+      <if test="forgaddr != null">
+        #{forgaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="fdestaddr != null">
+        #{fdestaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="fsubmittime != null">
+        #{fsubmittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ffeeterminal != null">
+        #{ffeeterminal,jdbcType=VARCHAR},
+      </if>
+      <if test="fserviceupid != null">
+        #{fserviceupid,jdbcType=INTEGER},
+      </if>
+      <if test="freportcode != null">
+        #{freportcode,jdbcType=VARCHAR},
+      </if>
+      <if test="flinkid != null">
+        #{flinkid,jdbcType=INTEGER},
+      </if>
+      <if test="fackstatus != null">
+        #{fackstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hl95.demo.entity.ReportExample" resultType="java.lang.Long">
+    select count(*) from report
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update report
+    <set>
+      <if test="record.platform != null">
+        PlatForm = #{record.platform,jdbcType=VARCHAR},
+      </if>
+      <if test="record.funikey != null">
+        FUnikey = #{record.funikey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.forgaddr != null">
+        FOrgAddr = #{record.forgaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdestaddr != null">
+        FDestAddr = #{record.fdestaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsubmittime != null">
+        FSubmitTime = #{record.fsubmittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ffeeterminal != null">
+        FFeeTerminal = #{record.ffeeterminal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fserviceupid != null">
+        FServiceUPID = #{record.fserviceupid,jdbcType=INTEGER},
+      </if>
+      <if test="record.freportcode != null">
+        FReportCode = #{record.freportcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flinkid != null">
+        FLinkID = #{record.flinkid,jdbcType=INTEGER},
+      </if>
+      <if test="record.fackstatus != null">
+        FAckStatus = #{record.fackstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update report
+    set PlatForm = #{record.platform,jdbcType=VARCHAR},
+      FUnikey = #{record.funikey,jdbcType=VARCHAR},
+      FOrgAddr = #{record.forgaddr,jdbcType=VARCHAR},
+      FDestAddr = #{record.fdestaddr,jdbcType=VARCHAR},
+      FSubmitTime = #{record.fsubmittime,jdbcType=TIMESTAMP},
+      FFeeTerminal = #{record.ffeeterminal,jdbcType=VARCHAR},
+      FServiceUPID = #{record.fserviceupid,jdbcType=INTEGER},
+      FReportCode = #{record.freportcode,jdbcType=VARCHAR},
+      FLinkID = #{record.flinkid,jdbcType=INTEGER},
+      FAckStatus = #{record.fackstatus,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

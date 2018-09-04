@@ -1,0 +1,9 @@
+[INFO][2018-08-28 17:49:45,357][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMvc': initialization started
+[INFO][2018-08-28 17:49:45,365][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMvc-servlet': startup date [Tue Aug 28 17:49:45 CST 2018]; parent: Root WebApplicationContext
+[INFO][2018-08-28 17:49:45,366][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mvc.xml]
+[INFO][2018-08-28 17:49:45,902][org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping]Mapped URL path [/hl95/demo] onto handler 'testController'
+[INFO][2018-08-28 17:49:45,902][org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping]Mapped URL path [/hl95/demo.*] onto handler 'testController'
+[INFO][2018-08-28 17:49:45,967][org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping]Mapped URL path [/hl95/demo/] onto handler 'testController'
+[INFO][2018-08-28 17:49:46,079][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMvc': initialization completed in 721 ms
+[ERROR][2018-08-28 17:49:59,474][com.hl95.demo.service.impl.TestServiceImpl]------[{"password":"wsm123456","account":"wsm"}]
+[ERROR][2018-08-28 17:50:06,053][com.hl95.demo.service.impl.TestServiceImpl]------[{"password":"wsm123456","account":"wsm"}]

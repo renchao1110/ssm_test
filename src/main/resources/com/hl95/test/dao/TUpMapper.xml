@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hl95.test.dao.TUpMapper">
+  <resultMap id="BaseResultMap" type="com.hl95.test.entity.TUp">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="msgContent" jdbcType="VARCHAR" property="msgcontent" />
+    <result column="spNumber" jdbcType="INTEGER" property="spnumber" />
+    <result column="linkid" jdbcType="INTEGER" property="linkid" />
+    <result column="serviceup" jdbcType="VARCHAR" property="serviceup" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from up
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hl95.test.entity.TUp">
+    insert into up (id, phone, msgContent, 
+      spNumber, linkid, serviceup
+      )
+    values (#{id,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{msgcontent,jdbcType=VARCHAR}, 
+      #{spnumber,jdbcType=INTEGER}, #{linkid,jdbcType=INTEGER}, #{serviceup,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.hl95.test.entity.TUp">
+    update up
+    set phone = #{phone,jdbcType=VARCHAR},
+      msgContent = #{msgcontent,jdbcType=VARCHAR},
+      spNumber = #{spnumber,jdbcType=INTEGER},
+      linkid = #{linkid,jdbcType=INTEGER},
+      serviceup = #{serviceup,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, phone, msgContent, spNumber, linkid, serviceup
+    from up
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, phone, msgContent, spNumber, linkid, serviceup
+    from up
+  </select>
+</mapper>
